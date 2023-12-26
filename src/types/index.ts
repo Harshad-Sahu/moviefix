@@ -30,5 +30,9 @@ export interface ImageGridProps {
   images: MovieData[];
   columnCount: number;
   rowHeight: number;
-  // scrollPosition: any;
+}
+
+export interface YearlyMoviesProps {
+  year: string;
+  movieData: MovieData[];
 }

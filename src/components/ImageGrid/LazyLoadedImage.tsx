@@ -21,8 +21,8 @@ const LazyLoadedImage: React.FC<LazyLoadedImageProps & LazyComponentProps> = ({
   return (
     <LazyLoadImage
       alt={alt}
-      height={222}
-      width={158}
+      height={height}
+      width={(window.innerWidth - 52) / 2}
       src={src}
       effect="blur"
       scrollPosition={scrollPosition}

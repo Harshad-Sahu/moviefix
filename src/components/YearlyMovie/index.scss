@@ -8,4 +8,9 @@
     color: #fff;
     margin-bottom: 0.5rem;
   }
+  .yearly-movies {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
 }
