@@ -1,5 +1,5 @@
 import React from "react";
-import { Filters, Headers } from "../../components";
+import { Filters, Headers, YearlyMovie } from "../../components";
 import "./index.scss";
 
 export const Dashboard = () => {
@@ -7,6 +7,7 @@ export const Dashboard = () => {
     <div className="dashboard-container">
       <Headers />
       <Filters />
+      <YearlyMovie />
     </div>
   );
 };
