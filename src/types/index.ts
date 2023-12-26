@@ -5,5 +5,6 @@ export interface Filters {
 
 export interface HomeState {
   filters: Filters[];
+  activeFilter: Filters;
   yearlyMovies: string[];
 }

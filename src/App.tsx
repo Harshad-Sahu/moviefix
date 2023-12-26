@@ -5,7 +5,6 @@ import store from "./redux/store";
 import { Dashboard } from "./pages";
 
 function App() {
-  console.log("App-->");
   return (
     <>
       <Provider store={store}>
