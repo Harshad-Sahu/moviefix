@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 5rem;
+  height: 3rem;
   width: 100%;
   background: #242424;
   padding: 1.25rem;
@@ -15,8 +15,7 @@
 /* Mobile */
 @media (max-width: 700px) {
   .header-container {
-    padding: 16px;
-    height: 3.5rem;
+    padding: 0px 16px;
     .logo {
       position: relative;
       height: 36px;
