@@ -32,7 +32,15 @@ export interface ImageGridProps {
   rowHeight: number;
 }
 
+type SetRowHeightFunction = (index: number, size: number) => void;
 export interface YearlyMoviesProps {
   year: string;
   movieData: MovieData[];
+  index: number;
+  setRowHeight: SetRowHeightFunction;
+}
+
+export interface VirtualisedYearlyListProps {
+  screenHeight: number;
+  years: number[];
 }
