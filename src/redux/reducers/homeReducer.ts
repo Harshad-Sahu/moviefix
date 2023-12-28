@@ -1,5 +1,5 @@
 import { HomeState } from "../../types";
-import { SET_ACTIVE_FILTER, SET_FILTER_DATA } from "../actions/homeActions";
+import { SET_ACTIVE_FILTER, SET_FILTER_DATA } from "../actions/actions";
 
 const initialState: HomeState = {
   filters: [],

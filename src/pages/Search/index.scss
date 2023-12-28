@@ -1,0 +1,41 @@
+.searchbox-container {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  .fixed-header {
+    position: fixed;
+    width: 100%;
+  }
+  .searchbox-wrapper {
+    .autoSizer {
+      height: 100% !important;
+      position: relative;
+      width: 100% !important;
+    }
+  }
+  .search-div {
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+    .search-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      row-gap: 16px;
+      column-gap: 16px;
+      .title {
+        font-size: 14px;
+        color: #fff;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: normal; /* or nowrap, depending on your needs */
+        -webkit-line-clamp: 2;
+      }
+    }
+  }
+}
+
+.infinite-scroll-component {
+  padding: 16px;
+}

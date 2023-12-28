@@ -1,10 +1,12 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import MovieFix from "../../Resources/Logo/MovieFlix.svg";
 import Search from "../../Resources/Icon/search.svg";
 import Cancel from "../../Resources/Icon/Cross.svg";
-
 import "./index.scss";
+
 export const Headers = () => {
+  const navigate = useNavigate();
   const [isSearchExpanded, setIsSearchExpanded] = useState(false);
   const [inputValue, setInputValue] = useState<string>("");
 
@@ -17,10 +19,7 @@ export const Headers = () => {
   };
 
   const handleEnterPressed = () => {
-    // Your method logic goes here
-    console.log("Enter key pressed! Value:", inputValue);
-    // Reset or clear the input value if needed
-    setInputValue("");
+    navigate(`/search/${inputValue}`);
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {

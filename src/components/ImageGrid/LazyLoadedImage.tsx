@@ -26,6 +26,7 @@ const LazyLoadedImage: React.FC<LazyLoadedImageProps & LazyComponentProps> = ({
       src={src}
       effect="blur"
       scrollPosition={scrollPosition}
+      style={{ borderRadius: 8 }}
     />
   );
 };
