@@ -1,5 +1,8 @@
 import { MovieData } from "../types";
 
+export const NO_DATA_FOUND =
+  "Oops! Something went wrong. Please try again later.";
+
 const result0: MovieData[] = [
   {
     adult: false,

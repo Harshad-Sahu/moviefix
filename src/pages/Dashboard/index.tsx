@@ -5,15 +5,16 @@ import {
   Filters,
   Headers,
   Loader,
+  NoData,
   YearlyMovie,
   // YearlyMovie,
 } from "../../components";
 import "./index.scss";
-import { resultArrays } from "../../common/constant";
 import { API_KEY } from "../../common/apiConfigs";
 import { MoviesByYear } from "../../types";
 import { SET_YEARLY_MOVIE_DATA } from "../../redux/actions/actions";
 import { RootState } from "../../redux/rootReducer";
+import InfiniteScroll from "react-infinite-scroll-component";
 // import { result } from "../../common/constant";
 
 export const Dashboard = () => {
@@ -24,7 +25,8 @@ export const Dashboard = () => {
   const [loading, setLoading] = useState(true);
   const [years, setYears] = useState<number[]>([]);
   const [fetchIndex, setFetchIndex] = useState(0);
-  const [screenHeight, setScreenHeight] = useState(window.innerHeight);
+  const [hasMore, setHasMore] = useState(true);
+  // const [screenHeight, setScreenHeight] = useState(window.innerHeight);
 
   useEffect(() => {
     const currentYear = new Date();
@@ -41,7 +43,7 @@ export const Dashboard = () => {
         const height = element.clientHeight;
         (elem as HTMLElement).style.paddingTop = `${height + 24}px`;
         (elem as HTMLElement).style.height = `calc(100% - ${height + 24}px)`;
-        setScreenHeight(window?.innerHeight - (height + 24));
+        // setScreenHeight(window?.innerHeight - (height + 24));
       }
     }, 350);
   }, []);
@@ -80,9 +82,13 @@ export const Dashboard = () => {
           data: moviesByYear,
         },
       });
+      setHasMore(fetchIndex + 3 <= years?.length);
+      setFetchIndex((val) => val + 3);
     } catch (error) {
     } finally {
-      setLoading(false);
+      setTimeout(() => {
+        setLoading(false);
+      }, 500);
     }
   };
 
@@ -94,37 +100,28 @@ export const Dashboard = () => {
       </div>
       <div className="dashboard-wrapper" id="dashboard-wrapper">
         {loading && <Loader height={48} width={48} />}
-        {!loading &&
-          Object.keys(moviesByYear).length &&
-          Object.keys(moviesByYear).map((year: string, index) => {
-            console.log("Year:", year);
-            console.log("Index:", index);
-
-            return (
-              <YearlyMovie
-                key={year}
-                year={year}
-                movieData={moviesByYear[year]}
-                index={index}
-                setRowHeight={setRowHeight}
-              />
-            );
-          })}
-        {/* {!loading && years?.length && (
-          <div style={{ width: "100%", height: "100%", overflowY: "auto" }}>
-            {years?.map((year, index) => {
+        {!loading && Object.keys(moviesByYear).length === 0 && <NoData />}
+        {!loading && Object.keys(moviesByYear).length && (
+          <InfiniteScroll
+            dataLength={Object.keys(moviesByYear).length}
+            next={fetchYearlyMovieData}
+            hasMore={hasMore}
+            loader={<Loader height={60} width={60} />}
+            scrollableTarget="searchbox-wrapper"
+          >
+            {Object.keys(moviesByYear).map((year: string, index) => {
               return (
                 <YearlyMovie
                   key={year}
-                  year={`${year}`}
-                  movieData={resultArrays[index]}
+                  year={year}
+                  movieData={moviesByYear[year]}
                   index={index}
                   setRowHeight={setRowHeight}
                 />
               );
             })}
-          </div>
-        )} */}
+          </InfiniteScroll>
+        )}
         {/* {years?.length && (
           <VirtualisedYearlyList screenHeight={screenHeight} years={years} />
         )} */}
