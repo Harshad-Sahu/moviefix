@@ -1,14 +1,25 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useNavigate, useLocation, useParams } from "react-router-dom";
 import MovieFix from "../../Resources/Logo/MovieFlix.svg";
 import Search from "../../Resources/Icon/search.svg";
 import Cancel from "../../Resources/Icon/Cross.svg";
 import "./index.scss";
 
 export const Headers = () => {
+  const { searchQuery } = useParams();
   const navigate = useNavigate();
-  const [isSearchExpanded, setIsSearchExpanded] = useState(false);
+  const location = useLocation();
+  const [isSearchExpanded, setIsSearchExpanded] = useState(
+    location?.pathname === "/" ? false : true
+  );
   const [inputValue, setInputValue] = useState<string>("");
+
+  useEffect(() => {
+    console.log("searchQuery-->", searchQuery);
+    if (location?.pathname !== "/") {
+      setInputValue(`${searchQuery}`);
+    }
+  }, [location, searchQuery]);
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     // Check if the pressed key is Enter (key code 13)
@@ -19,7 +30,9 @@ export const Headers = () => {
   };
 
   const handleEnterPressed = () => {
-    navigate(`/search/${inputValue}`);
+    if (inputValue?.length) {
+      navigate(`/search/${inputValue}`);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -31,7 +44,11 @@ export const Headers = () => {
 
   const handleCancel = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     e.stopPropagation();
-    setIsSearchExpanded(false);
+    if (inputValue?.length) {
+      setInputValue("");
+    } else {
+      setIsSearchExpanded(false);
+    }
   };
 
   return (
@@ -47,6 +64,7 @@ export const Headers = () => {
           <>
             <input
               type="text"
+              defaultValue={inputValue}
               placeholder="Search movie by name & press enter"
               className="search-input"
               onChange={handleChange}

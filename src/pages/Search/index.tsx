@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { useParams } from "react-router";
-import { Headers, VirtualisedGridSearch } from "../../components";
+import { Headers } from "../../components";
 import { API_KEY, SEARCH_ENDPOINT } from "../../common/apiConfigs";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../redux/rootReducer";

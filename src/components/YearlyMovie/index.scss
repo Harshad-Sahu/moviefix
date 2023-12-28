@@ -12,5 +12,31 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
+
+    .movie-wrap {
+      position: relative;
+      .title-movie {
+        font-size: 14px;
+        line-height: 120%;
+        color: #fff;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: normal; /* or nowrap, depending on your needs */
+        -webkit-line-clamp: 2;
+      }
+      .rating-wrapper {
+        display: flex;
+        align-items: center;
+        margin: 6px 0px 8px 0px;
+        .rating {
+          color: #fff;
+          font-size: 12px;
+          line-height: 100%;
+          margin-left: 0.25rem;
+        }
+      }
+    }
   }
 }

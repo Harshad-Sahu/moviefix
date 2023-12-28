@@ -6,7 +6,7 @@ export interface Filters {
 export interface HomeState {
   filters: Filters[];
   activeFilter: Filters;
-  yearlyMovies: string[];
+  moviesByYear: MoviesByYear;
 }
 
 export interface MovieData {
@@ -72,4 +72,13 @@ export interface SearchGridProps {
   searchData: SearchResponseType[];
   fetchMoreData: fetchMoreData;
   hasMore: boolean;
+}
+
+export interface LoaderProp {
+  height?: number;
+  width?: number;
+}
+
+export interface MoviesByYear {
+  [year: string]: MovieData[];
 }
