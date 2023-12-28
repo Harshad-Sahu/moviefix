@@ -15,7 +15,6 @@ export const Headers = () => {
   const [inputValue, setInputValue] = useState<string>("");
 
   useEffect(() => {
-    console.log("searchQuery-->", searchQuery);
     if (location?.pathname !== "/") {
       setInputValue(`${searchQuery}`);
     }

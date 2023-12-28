@@ -23,7 +23,6 @@ export const VirtualisedGridSearch = ({
     columnIndex: number;
     style: React.CSSProperties;
   }> = ({ rowIndex, columnIndex, style }) => {
-    console.log("rowIndex-->", rowIndex);
     const item = searchData[rowIndex * 2 + columnIndex];
     return (
       <div

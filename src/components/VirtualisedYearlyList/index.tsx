@@ -17,11 +17,6 @@ export const VirtualisedYearlyList: React.FC<VirtualisedYearlyListProps> = ({
   const rowHeights = useRef<{ [key: number]: number }>({});
 
   const getRowHeight = (index: number) => {
-    console.log(
-      "rowHeights.current[index]-->",
-      index,
-      rowHeights.current[index]
-    );
     return rowHeights.current[index] + 8 || 82;
   };
 
