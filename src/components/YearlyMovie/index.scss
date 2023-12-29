@@ -1,0 +1,58 @@
+.yearly-container {
+  padding: 1.5rem 16px 0rem 16px;
+  .year-header {
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 30px;
+    text-align: left;
+    color: #fff;
+    margin-bottom: 0.5rem;
+  }
+  .yearly-movies {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+
+    .movie-wrap {
+      position: relative;
+      .title-movie {
+        font-size: 14px;
+        line-height: 120%;
+        color: #fff;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: normal; /* or nowrap, depending on your needs */
+        -webkit-line-clamp: 2;
+      }
+      .rating-wrapper {
+        display: flex;
+        align-items: center;
+        margin: 6px 0px 8px 0px;
+        .rating {
+          color: #fff;
+          font-size: 12px;
+          line-height: 100%;
+          margin-left: 0.25rem;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 600px) and (max-width: 1024px) {
+  .yearly-container {
+    .yearly-movies {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+}
+
+@media only screen and (min-width: 1025px) {
+  .yearly-container {
+    .yearly-movies {
+      grid-template-columns: repeat(5, 1fr);
+    }
+  }
+}

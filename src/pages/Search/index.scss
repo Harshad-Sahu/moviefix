@@ -1,0 +1,98 @@
+.searchbox-container {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  .fixed-header {
+    position: fixed;
+    width: 100%;
+    z-index: 9;
+  }
+  .searchbox-wrapper {
+    .autoSizer {
+      height: 100% !important;
+      position: relative;
+      width: 100% !important;
+    }
+  }
+  .search-div {
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+    .search-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      row-gap: 16px;
+      column-gap: 16px;
+      .title {
+        font-size: 14px;
+        color: #fff;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: normal; /* or nowrap, depending on your needs */
+        -webkit-line-clamp: 2;
+        margin: 4px 0px 8px 0px;
+      }
+    }
+    .serach-mssg-wrapper {
+      height: 80%;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      .search-text {
+        font-size: 14px;
+        color: #fff;
+        text-align: center;
+        width: 60%;
+        line-height: 150%;
+      }
+    }
+  }
+
+  .search-div::-webkit-scrollbar-track {
+    border-radius: 10px;
+  }
+  .search-div::-webkit-scrollbar {
+    width: 4px;
+    height: 2px;
+  }
+  .search-div::-webkit-scrollbar-thumb {
+    border: 2px solid transparent;
+    border-radius: 10px;
+    background-color: grey;
+  }
+}
+
+.infinite-scroll-component {
+  padding: 16px;
+}
+
+@media only screen and (min-width: 600px) and (max-width: 1024px) {
+  .searchbox-container {
+    .search-div {
+      .search-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 1025px) {
+  .searchbox-container {
+    .search-div {
+      .search-grid {
+        grid-template-columns: repeat(5, 1fr);
+      }
+      .serach-mssg-wrapper {
+        .search-text {
+          width: 25%;
+          font-size: 16px;
+        }
+      }
+    }
+  }
+}

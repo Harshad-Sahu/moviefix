@@ -5,7 +5,7 @@ import { API_KEY, FILTER_ENDPOINT } from "../../common/apiConfigs";
 import {
   SET_ACTIVE_FILTER,
   SET_FILTER_DATA,
-} from "../../redux/actions/homeActions";
+} from "../../redux/actions/actions";
 import { RootState } from "../../redux/rootReducer";
 import "./index.scss";
 import { Filters as FilterType } from "../../types";

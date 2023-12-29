@@ -1,2 +1,0 @@
-export const SET_FILTER_DATA = "SET_FILTER_DATA";
-export const SET_ACTIVE_FILTER = "SET_ACTIVE_FILTER";
