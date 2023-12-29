@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { Headers, Loader, NoData } from "../../components";
@@ -13,6 +13,7 @@ import { getGridAsPerScreen } from "../../common/method";
 
 export const Search = () => {
   const dispatch = useDispatch();
+  const scrollableDivRef = useRef<HTMLDivElement>(null);
   const [searchTerm, setSearchTerm] = useState("");
   const searchData = useSelector((state: RootState) => state.search.searchData);
   const [hasMore, setHasMore] = useState(true);
@@ -32,14 +33,13 @@ export const Search = () => {
 
   // Fetch initial data
   useEffect(() => {
-    if (searchTerm?.length) {
-      setPage((val) => (val !== undefined ? val + 1 : 1));
-    } else {
-      if (page !== undefined && page < 0) {
-        setPage((val) => (val !== undefined ? val - 1 : 0));
-      } else {
-        setPage(0);
-      }
+    if (scrollableDivRef.current) {
+      scrollableDivRef.current.scrollTop = 0;
+    }
+    if (searchTerm?.length && page === 1) {
+      fetchData();
+    } else if (searchTerm?.length && page !== 1) {
+      setPage(1);
     }
   }, [searchTerm]); // eslint-disable-line react-hooks/exhaustive-deps
 
@@ -51,20 +51,22 @@ export const Search = () => {
 
   const fetchData = async () => {
     try {
-      const params: Record<string, string | number> = {
-        api_key: API_KEY,
-        page: page ? (page < 1 ? 1 : page) : 1,
-        query: searchTerm,
-      };
-      const res = await axios.get(SEARCH_ENDPOINT, { params });
-      dispatch({
-        type: SET_SEARCH_DATA,
-        payload:
-          page && page <= 1
-            ? res?.data?.results
-            : [...searchData, ...res?.data?.results],
-      });
-      setHasMore(res?.data?.results.length === 20);
+      if (searchTerm?.length) {
+        const params: Record<string, string | number> = {
+          api_key: API_KEY,
+          page: page ? (page < 1 ? 1 : page) : 1,
+          query: searchTerm,
+        };
+        const res = await axios.get(SEARCH_ENDPOINT, { params });
+        dispatch({
+          type: SET_SEARCH_DATA,
+          payload:
+            page && page <= 1
+              ? res?.data?.results
+              : [...searchData, ...res?.data?.results],
+        });
+        setHasMore(res?.data?.results.length === 20);
+      }
     } catch (error) {}
   };
 
@@ -83,7 +85,11 @@ export const Search = () => {
       <div className="fixed-header" id={"searchbox-header"}>
         <Headers onSearch={onSearch} />
       </div>
-      <div className="searchbox-wrapper search-div" id="searchbox-wrapper">
+      <div
+        className="searchbox-wrapper search-div"
+        id="searchbox-wrapper"
+        ref={scrollableDivRef}
+      >
         {searchTerm?.length && searchData.length && (
           <InfiniteScroll
             dataLength={searchData.length}
