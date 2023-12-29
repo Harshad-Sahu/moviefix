@@ -10,7 +10,7 @@ import {
   // YearlyMovie,
 } from "../../components";
 import "./index.scss";
-import { API_KEY } from "../../common/apiConfigs";
+import { API_KEY, MOVIE_DATA } from "../../common/apiConfigs";
 import { MoviesByYear } from "../../types";
 import { SET_YEARLY_MOVIE_DATA } from "../../redux/actions/actions";
 import { RootState } from "../../redux/rootReducer";
@@ -87,7 +87,7 @@ export const Dashboard = () => {
               (fetchIndex < 0 ? 0 : fetchIndex) + 3
             )
             .map(async (year) => {
-              const url = "https://api.themoviedb.org/3/discover/movie";
+              const url = MOVIE_DATA;
               const params: Record<string, string | number> = {
                 api_key: API_KEY,
                 sort_by: "popularity.desc",
