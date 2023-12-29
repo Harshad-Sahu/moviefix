@@ -1,3 +1,5 @@
+import { Filters } from "../types";
+
 export const getGridAsPerScreen = (): number => {
   const screenWidth = window.innerWidth;
 
@@ -11,4 +13,12 @@ export const getGridAsPerScreen = (): number => {
     // Desktop or larger screens
     return 5.2;
   }
+};
+
+export const getGenreNames = (genre: Filters[], genreArray: number[]) => {
+  const selectedGenres = genre.filter((g) =>
+    genreArray.includes(parseInt(`${g?.id}`))
+  );
+  const genreNames = selectedGenres.map((g) => g.name).join(", ");
+  return genreNames;
 };

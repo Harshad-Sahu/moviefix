@@ -12,6 +12,7 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
+    row-gap: 2rem;
 
     .movie-wrap {
       position: relative;
@@ -35,6 +36,36 @@
           font-size: 12px;
           line-height: 100%;
           margin-left: 0.25rem;
+        }
+      }
+      .movieDetails {
+        color: rgba(255, 255, 255, 0.6);
+        font-size: 14px;
+        line-height: 120%;
+        .genre-wrapper {
+          margin-bottom: 8px;
+          display: flex;
+          .filter-head {
+            font-size: 12;
+            color: rgba(255, 255, 255, 0.4);
+            margin-right: 8px;
+          }
+          .filters {
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: normal; /* or nowrap, depending on your needs */
+            -webkit-line-clamp: 1;
+          }
+        }
+        .movie-bio {
+          display: -webkit-box;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: normal; /* or nowrap, depending on your needs */
+          -webkit-line-clamp: 3;
         }
       }
     }

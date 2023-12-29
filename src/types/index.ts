@@ -26,12 +26,6 @@ export interface MovieData {
   vote_count: number;
 }
 
-export interface ImageGridProps {
-  images: MovieData[];
-  columnCount: number;
-  rowHeight: number;
-}
-
 type SetRowHeightFunction = (index: number, size: number) => void;
 export interface YearlyMoviesProps {
   year: string;
@@ -85,4 +79,8 @@ export interface MoviesByYear {
 
 export interface HeadersProps {
   onSearch?: (debouncedInputValue: string) => void;
+}
+
+export interface ImageGridProps {
+  movie: SearchResponseType | MovieData;
 }
