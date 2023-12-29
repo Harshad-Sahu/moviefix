@@ -161,9 +161,6 @@ export const Dashboard = () => {
           ) : (
             <NoData />
           ))}
-        {/* {years?.length && (
-          <VirtualisedYearlyList screenHeight={screenHeight} years={years} />
-        )} */}
       </div>
     </div>
   );

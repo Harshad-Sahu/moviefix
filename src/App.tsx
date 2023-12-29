@@ -10,7 +10,7 @@ function App() {
       <Provider store={store}>
         <Routes>
           <Route path="/" element={<Dashboard />} />
-          <Route path="/search/:searchQuery" element={<Search />} />
+          <Route path="/search" element={<Search />} />
         </Routes>
       </Provider>
     </>

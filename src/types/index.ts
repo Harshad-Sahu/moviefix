@@ -82,3 +82,7 @@ export interface LoaderProp {
 export interface MoviesByYear {
   [year: string]: MovieData[];
 }
+
+export interface HeadersProps {
+  onSearch?: (debouncedInputValue: string) => void;
+}

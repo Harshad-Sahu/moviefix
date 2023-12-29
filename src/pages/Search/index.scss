@@ -32,6 +32,22 @@
         text-overflow: ellipsis;
         white-space: normal; /* or nowrap, depending on your needs */
         -webkit-line-clamp: 2;
+        margin: 4px 0px 8px 0px;
+      }
+    }
+    .serach-mssg-wrapper {
+      height: 80%;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      .search-text {
+        font-size: 14px;
+        color: #fff;
+        text-align: center;
+        width: 60%;
+        line-height: 150%;
       }
     }
   }
