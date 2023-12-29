@@ -6,7 +6,6 @@ import Cancel from "../../Resources/Icon/Cross.svg";
 import "./index.scss";
 import { HeadersProps } from "../../types";
 import useDebounce from "../../customHooks/useDebounce";
-// ... (other imports)
 
 export const Headers: React.FC<HeadersProps> = ({ onSearch }) => {
   const inputRef = useRef<HTMLInputElement | null>(null);
@@ -48,6 +47,14 @@ export const Headers: React.FC<HeadersProps> = ({ onSearch }) => {
     }
   };
 
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      if (inputRef.current) {
+        inputRef.current.blur();
+      }
+    }
+  };
+
   return (
     <div className={`header-container ${isSearchExpanded ? "expanded" : ""}`}>
       <img
@@ -65,6 +72,7 @@ export const Headers: React.FC<HeadersProps> = ({ onSearch }) => {
               className="search-input"
               value={inputValue}
               onChange={handleChange}
+              onKeyDown={handleKeyDown}
               ref={inputRef}
             />
             <div className="cancel-wrapper" onClick={handleCancel}>
