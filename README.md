@@ -32,7 +32,7 @@ The project is already deployed on AWS S3 at [http://moviefix-harshad.s3-website
 
 - **NPM Version:** v9.8.1
 
-For optimal results or in case of any issues running the project, it is recommended to use Node v18.18.0 and NPM v9.8.1. Ensure to obtain an API Key from [TMDb](https://www.themoviedb.org/documentation/api) and add it to the configuration file.
+For optimal results or in case of any issues running the project, it is recommended to use Node v18.18.0 and NPM v9.8.1.
 
 ## Getting Started
 
