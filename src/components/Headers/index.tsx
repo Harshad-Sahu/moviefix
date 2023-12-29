@@ -17,7 +17,6 @@ export const Headers: React.FC<HeadersProps> = ({ onSearch }) => {
   const debouncedInputValue = useDebounce(inputValue, 500);
 
   useEffect(() => {
-    console.log("debouncedInputValue-->", debouncedInputValue);
     if (onSearch) {
       onSearch(debouncedInputValue);
     }
@@ -43,6 +42,9 @@ export const Headers: React.FC<HeadersProps> = ({ onSearch }) => {
     e.stopPropagation();
     if (inputValue?.length) {
       setInputValue("");
+      setTimeout(() => {
+        inputRef.current?.focus();
+      }, 100);
     }
   };
 

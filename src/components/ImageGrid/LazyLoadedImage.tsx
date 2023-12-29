@@ -6,6 +6,7 @@ import {
   trackWindowScroll,
 } from "react-lazy-load-image-component";
 import PlaceholderImage from "../../Resources/Icon/Placeholder.jpg";
+import { getGridAsPerScreen } from "../../common/method";
 
 interface LazyLoadedImageProps {
   src: string;
@@ -29,7 +30,7 @@ const LazyLoadedImage: React.FC<LazyLoadedImageProps & LazyComponentProps> = ({
     <LazyLoadImage
       alt={alt}
       height={height}
-      width={(window.innerWidth - 52) / 2}
+      width={(window.innerWidth - 52) / getGridAsPerScreen()}
       src={imageSrc}
       effect="blur"
       scrollPosition={scrollPosition}

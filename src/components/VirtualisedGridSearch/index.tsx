@@ -4,6 +4,7 @@ import AutoSizer from "react-virtualized-auto-sizer";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { VariableSizeGrid as Grid } from "react-window";
 import { SearchGridProps } from "../../types";
+import { getGridAsPerScreen } from "../../common/method";
 
 export const VirtualisedGridSearch = ({
   searchData,
@@ -11,11 +12,11 @@ export const VirtualisedGridSearch = ({
   hasMore,
 }: SearchGridProps) => {
   const calculateRowHeight = (index: number) => {
-    return ((window.innerWidth - 52) / 2) * 1.5 + 16;
+    return ((window.innerWidth - 52) / getGridAsPerScreen()) * 1.5 + 16;
   };
 
   const calculateColumnWidth = (index: number) => {
-    return window.innerWidth / 2;
+    return window.innerWidth / getGridAsPerScreen();
   };
 
   const Item: React.FC<{
@@ -28,7 +29,9 @@ export const VirtualisedGridSearch = ({
       <div
         style={{
           ...style,
-          height: `${((window.innerWidth - 52) / 2) * 1.5 + 16}px`,
+          height: `${
+            ((window.innerWidth - 52) / getGridAsPerScreen()) * 1.5 + 16
+          }px`,
           left:
             style.left !== undefined
               ? `${parseInt(style.left as string, 10) + 16}px`
@@ -41,7 +44,7 @@ export const VirtualisedGridSearch = ({
             <LazyLoadedImage
               key={`${item?.id}`}
               alt={`Image ${item?.id}`}
-              height={((window.innerWidth - 52) / 2) * 1.5}
+              height={((window.innerWidth - 52) / getGridAsPerScreen()) * 1.5}
               src={`https://image.tmdb.org/t/p/original/${item?.poster_path}`}
             />
           </div>
@@ -63,7 +66,7 @@ export const VirtualisedGridSearch = ({
               height={height}
               width={width}
               columnCount={2} // Assuming a single column
-              rowCount={searchData?.length / 2} // Set the total number of rows
+              rowCount={searchData?.length / getGridAsPerScreen()} // Set the total number of rows
               itemData={searchData}
               itemKey={({ rowIndex }) => rowIndex} // Unique key for each item
               rowHeight={calculateRowHeight}

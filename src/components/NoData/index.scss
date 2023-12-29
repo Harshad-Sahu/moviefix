@@ -1,5 +1,5 @@
 .no-data-wrapper {
-  height: 100%;
+  height: 80%;
   width: 100%;
   display: flex;
   align-items: center;
@@ -8,5 +8,18 @@
   .no-text {
     font-size: 12px;
     color: #fff;
+    width: 60%;
+    line-height: 150%;
+    text-align: center;
+  }
+}
+
+@media only screen and (min-width: 1025px) {
+  .no-data-wrapper {
+    .no-text {
+      font-size: 16px;
+      color: #fff;
+      width: 25%;
+    }
   }
 }

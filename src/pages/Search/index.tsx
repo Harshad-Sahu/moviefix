@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import InfiniteScroll from "react-infinite-scroll-component";
-import { Headers, Loader } from "../../components";
+import { Headers, Loader, NoData } from "../../components";
 import { API_KEY, SEARCH_ENDPOINT } from "../../common/apiConfigs";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../redux/rootReducer";
 import { SET_SEARCH_DATA } from "../../redux/actions/actions";
 import "./index.scss";
 import LazyLoadedImage from "../../components/ImageGrid/LazyLoadedImage";
-import { SEARCH_MESSAGE } from "../../common/constant";
+import { NO_DATA_SEARCH, SEARCH_MESSAGE } from "../../common/constant";
+import { getGridAsPerScreen } from "../../common/method";
 
 export const Search = () => {
   const dispatch = useDispatch();
@@ -83,7 +84,7 @@ export const Search = () => {
         <Headers onSearch={onSearch} />
       </div>
       <div className="searchbox-wrapper search-div" id="searchbox-wrapper">
-        {searchTerm?.length && (
+        {searchTerm?.length && searchData.length && (
           <InfiniteScroll
             dataLength={searchData.length}
             next={fetchMoreData}
@@ -97,7 +98,9 @@ export const Search = () => {
                   <div key={`${item?.id}`}>
                     <LazyLoadedImage
                       alt={`Image ${item?.id}`}
-                      height={((window.innerWidth - 52) / 2) * 1.5}
+                      height={
+                        ((window.innerWidth - 52) / getGridAsPerScreen()) * 1.5
+                      }
                       src={`https://image.tmdb.org/t/p/original/${item?.poster_path}`}
                     />
                     <div className="title">{item?.original_title}</div>
@@ -106,6 +109,9 @@ export const Search = () => {
               })}
             </div>
           </InfiniteScroll>
+        )}
+        {searchTerm?.length && searchData?.length === 0 && (
+          <NoData message={NO_DATA_SEARCH} />
         )}
         {searchTerm?.length === 0 && (
           <div className="serach-mssg-wrapper">
