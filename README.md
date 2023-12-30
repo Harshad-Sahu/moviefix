@@ -14,6 +14,10 @@ The project is already deployed on AWS S3 at [http://moviefix-harshad.s3-website
 
 - **Infinite Scrolling:** As users scroll through the movie list, the app dynamically loads additional top movies from both previous and next years, ensuring a continuous and engaging browsing experience.
 
+- **Search Functionality:** The app includes a search feature that allows users to search for movies based on specific terms. The search results display all relevant movies, providing a comprehensive view of the user's query.
+
+- **Detailed Movie Information:** For each movie, the app displays essential details, including the movie poster, title, rating, genre, and a short bio. This comprehensive information enhances the user's understanding of each movie and aids in the selection process.
+
 - **Image Optimization:** The app employs image optimization techniques to enhance performance. Images are compressed and served in an optimized format to reduce loading times.
 
 - **Lazy Loading:** Images are lazily loaded as the user interacts with the content, improving initial page load times and overall user experience.
@@ -32,7 +36,7 @@ The project is already deployed on AWS S3 at [http://moviefix-harshad.s3-website
 
 - **NPM Version:** v9.8.1
 
-For optimal results or in case of any issues running the project, it is recommended to use Node v18.18.0 and NPM v9.8.1.
+𝑭𝒐𝒓 𝒐𝒑𝒕𝒊𝒎𝒂𝒍 𝒓𝒆𝒔𝒖𝒍𝒕𝒔 𝒐𝒓 𝒊𝒏 𝒄𝒂𝒔𝒆 𝒐𝒇 𝒂𝒏𝒚 𝒊𝒔𝒔𝒖𝒆𝒔 𝒓𝒖𝒏𝒏𝒊𝒏𝒈 𝒕𝒉𝒆 𝒑𝒓𝒐𝒋𝒆𝒄𝒕, 𝒊𝒕 𝒊𝒔 𝒓𝒆𝒄𝒐𝒎𝒎𝒆𝒏𝒅𝒆𝒅 𝒕𝒐 𝒖𝒔𝒆 𝑵𝒐𝒅𝒆 𝒗18.18.0 𝒂𝒏𝒅 𝑵𝑷𝑴 𝒗9.8.1.
 
 ## Getting Started
 
